@@ -4,7 +4,7 @@ signal state_changed(new_state)
 
 @onready var player_detection_zone = $PlayerDetectionZone
 
-var player = null
+var player : Wizard  = null
 var actor = null
 
 enum AiState{
@@ -27,6 +27,7 @@ func _process(delta):
 			pass
 		AiState.ENGAGE:
 			if player != null:
+				player.get_
 				pass
 			else:
 				print("In Engage state but player not valid")

@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Wizard
 
 var screen_size # Size of the game window.
 @export var speed = 300.0
