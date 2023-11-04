@@ -4,7 +4,7 @@ signal state_changed(new_state)
 
 @onready var player_detection_zone = $PlayerDetectionZone
 
-var player : Wizard  = null
+var player : Player  = null
 var actor = null
 
 enum AiState{
