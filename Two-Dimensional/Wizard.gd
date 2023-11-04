@@ -44,6 +44,10 @@ func _physics_process(delta):
 			$AnimationPlayer.play("attack1")
 		elif Input.is_action_pressed("attack2"):
 			$AnimationPlayer.play("attack2")
+		elif Input.is_action_pressed("flame"):
+			$AnimationPlayer.play("flame")	
+		elif Input.is_action_pressed("fireball"):
+			$AnimationPlayer.play("fireball")	
 		elif Input.is_action_pressed("run"):
 			$AnimationPlayer.play("run")
 		else:
@@ -58,6 +62,10 @@ func _physics_process(delta):
 			$AnimationPlayer.play("attack1")
 		elif Input.is_action_pressed("attack2"):
 			$AnimationPlayer.play("attack2")
+		elif Input.is_action_pressed("flame"):
+			$AnimationPlayer.play("flame")	
+		elif Input.is_action_pressed("fireball"):
+			$AnimationPlayer.play("fireball")	
 		else:
 			$AnimationPlayer.play("idle")
 
