@@ -25,12 +25,11 @@ func _process(delta):
 	if velocity.length() > 0:
 		# need to normalize as otherwise player will move faster diagnolly 
 		velocity = velocity.normalized() * speed
-		$Body.play()
 	else:
 		if Input.is_action_pressed("attack1"):
 			$AnimationPlayer.play("attack1")
-		elif Input.is_action_pressed("attack2"):
-			$Body.animation = "attack2"
+		#elif Input.is_action_pressed("attack2"):
+		#	$Body.animation = "attack2"
 		else:
 			$AnimationPlayer.play("idle")
 		# $Body.stop() Could add some timer cause idle doesn't feel very idle
@@ -42,15 +41,24 @@ func _process(delta):
 	if velocity.x != 0 || velocity.y != 0:
 		if Input.is_action_pressed("attack1"):
 			$AnimationPlayer.play("attack1")
-		elif Input.is_action_pressed("attack2"):
-			$Body.animation = "attack2"
+		#elif Input.is_action_pressed("attack2"):
+		#	$Body.animation = "attack2"
 		elif Input.is_action_pressed("run"):
-			$Body.animation = "run"
+			$AnimationPlayer.play("run")
 		else:
 			$AnimationPlayer.play("walk")
-		$Body.flip_v = false
+			
 		# Will flip horizontally if moving in negative direction (To left)
-		$Body.flip_h = velocity.x < 0
+		if (velocity.x < 0):
+			flip_left()
+		else:
+			flip_right()
+
+func flip_right():
+	scale.x = 1
+	
+func flip_left():
+	scale.x = -1
 
 
 func _on_sword_hit_area_entered(area):
