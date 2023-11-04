@@ -6,8 +6,8 @@ extends Node
 const zombiepath = preload("res://Npc/zombie.tscn")
 @export var zombie : PackedScene
 
-@onready var pathfollow2d = wizard.get("path_follow_2d")
-@onready var spawn_point = wizard.get("spawn_point")
+#@onready var pathfollow2d = wizard.get("path_follow_2d")
+#@onready var spawn_point = wizard.get("spawn_point")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
