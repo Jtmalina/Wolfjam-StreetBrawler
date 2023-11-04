@@ -5,7 +5,7 @@ signal state_changed(new_state)
 @onready var player_detection_zone = $PlayerDetectionZone
 
 var player : Player  = null
-var actor = null
+var actor : mob = null
 
 enum AiState{
 	PATROL,
@@ -27,7 +27,9 @@ func _process(delta):
 			pass
 		AiState.ENGAGE:
 			if player != null:
-				player.get_
+				var DirectionToMove = actor.global_position.direction_to(player.global_position)
+				var DistanceToMove = actor.global_position.distance_to(player.global_position)
+				actor.process_detection(DirectionToMove, DistanceToMove)
 				pass
 			else:
 				print("In Engage state but player not valid")
@@ -39,5 +41,5 @@ func _on_player_detection_zone_body_entered(body):
 		_set_state(AiState.ENGAGE)
 		player = body
 
-func initialize(actor): # can add a weapon: Weapon type if we go modular
+func initialize(actor: mob): # can add a weapon: Weapon type if we go modular
 	self.actor = actor

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://buxaqtbok7v2"]
+[gd_scene load_steps=8 format=3 uid="uid://buxaqtbok7v2"]
 
 [ext_resource type="Script" path="res://Maps/world.gd" id="1_gah2p"]
 [ext_resource type="PackedScene" uid="uid://dg5b5xqrm2wio" path="res://wizard.tscn" id="1_h751q"]
 [ext_resource type="Texture2D" uid="uid://dlpk6o2bpfvg8" path="res://Assets/World/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="2_svldf"]
 [ext_resource type="PackedScene" uid="uid://d0vxvx3wnavr3" path="res://Decor/barrel.tscn" id="3_auea5"]
+[ext_resource type="PackedScene" uid="uid://cn1tkl805dpv4" path="res://Npc/zombie.tscn" id="5_f5yim"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jtyix"]
 texture = ExtResource("2_svldf")
@@ -1439,3 +1440,6 @@ position = Vector2(191, 240)
 
 [node name="Barrel" parent="." instance=ExtResource("3_auea5")]
 position = Vector2(255, 208)
+
+[node name="Zombie" parent="." instance=ExtResource("5_f5yim")]
+position = Vector2(472, 176)
