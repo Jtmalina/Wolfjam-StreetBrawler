@@ -71,9 +71,10 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func _on_sword_hit_area_entered(area):
+func _on_hit_box_area_entered(area):
 	if area.is_in_group("hurtbox"):
 		area.take_damage()
 		
 func take_damage(damage):
 	health -= damage
+	$AnimationPlayer.play("hurt")

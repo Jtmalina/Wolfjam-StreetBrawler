@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://cn1tkl805dpv4"]
 
-[ext_resource type="Script" path="res://Npc/zombie.gd" id="1_gttrw"]
 [ext_resource type="Texture2D" uid="uid://dpo5n1vb7wala" path="res://CharacterPacks/Zombie/Zombie Man/Walk.png" id="1_j6bcm"]
+[ext_resource type="Script" path="res://Npc/mob.gd" id="1_wyhvi"]
 [ext_resource type="Script" path="res://Actions/HurtBox.gd" id="2_wm0ag"]
 [ext_resource type="Texture2D" uid="uid://dlj5gdqood6xo" path="res://CharacterPacks/Zombie/Zombie Man/Dead.png" id="3_xvm02"]
 [ext_resource type="Texture2D" uid="uid://d3vha4rewrkpg" path="res://CharacterPacks/Zombie/Zombie Man/Run.png" id="4_4ny83"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://cb2wka3gfh6hg" path="res://CharacterPacks/Zombie/Zombie Man/Attack_1.png" id="6_emcbs"]
 [ext_resource type="Script" path="res://Actions/HitBox.gd" id="7_qmhg6"]
 [ext_resource type="Script" path="res://Npc/AISideScroll.gd" id="9_jcg8w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l723r"]
+size = Vector2(34, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5qyf"]
 size = Vector2(32, 64)
@@ -119,7 +122,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HitBox/attack1:disabled")
+tracks/4/path = NodePath("Sprite2D/HitBox/attack1:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -342,7 +345,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HitBox/attack1:disabled")
+tracks/4/path = NodePath("Sprite2D/HitBox/attack1:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -365,18 +368,24 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhneo"]
 size = Vector2(32, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l723r"]
-size = Vector2(34, 50)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rgedi"]
 size = Vector2(384, 82)
 
 [node name="Zombie" type="CharacterBody2D" groups=["enemy"]]
-script = ExtResource("1_gttrw")
+script = ExtResource("1_wyhvi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_j6bcm")
 hframes = 8
+
+[node name="HitBox" type="Area2D" parent="Sprite2D"]
+script = ExtResource("7_qmhg6")
+damage = 5
+
+[node name="attack1" type="CollisionShape2D" parent="Sprite2D/HitBox"]
+position = Vector2(33, 7)
+shape = SubResource("RectangleShape2D_l723r")
+disabled = true
 
 [node name="HurtBox" type="Area2D" parent="."]
 position = Vector2(0, -1)
@@ -395,15 +404,6 @@ libraries = {
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_bhneo")
 
-[node name="HitBox" type="Area2D" parent="."]
-script = ExtResource("7_qmhg6")
-damage = 5
-
-[node name="attack1" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(33, 7)
-shape = SubResource("RectangleShape2D_l723r")
-disabled = true
-
 [node name="AttackTimer" type="Timer" parent="."]
 
 [node name="AISideScroll" type="Node2D" parent="."]
@@ -414,4 +414,5 @@ script = ExtResource("9_jcg8w")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AISideScroll/PlayerDetectionZone"]
 shape = SubResource("RectangleShape2D_rgedi")
 
+[connection signal="area_entered" from="Sprite2D/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="AISideScroll/PlayerDetectionZone" to="AISideScroll" method="_on_player_detection_zone_body_entered"]
