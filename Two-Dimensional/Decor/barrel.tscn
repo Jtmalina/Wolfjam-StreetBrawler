@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0vxvx3wnavr3"]
+
+[ext_resource type="Script" path="res://Decor/barrel.gd" id="1_g6bwb"]
+[ext_resource type="Texture2D" uid="uid://bx71hdiud7mki" path="res://Assets/Medieval_Castle_Asset_Pack/Decorations/crate_1_damaged.png" id="1_ugrwy"]
+[ext_resource type="Texture2D" uid="uid://bmg6mglmh48t0" path="res://Assets/Medieval_Castle_Asset_Pack/Decorations/crate_1.png" id="2_o838u"]
+[ext_resource type="Script" path="res://Actions/HurtBox.gd" id="3_lj2s1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h15w8"]
+size = Vector2(32, 30)
+
+[node name="Barrel" type="Node2D"]
+script = ExtResource("1_g6bwb")
+
+[node name="Destroyed" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 5)
+texture = ExtResource("1_ugrwy")
+
+[node name="Fixed" type="Sprite2D" parent="."]
+texture = ExtResource("2_o838u")
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("3_lj2s1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_h15w8")
+
+[connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]

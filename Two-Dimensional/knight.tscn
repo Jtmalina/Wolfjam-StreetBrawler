@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyvclbja4c8ae"]
+
+[ext_resource type="Script" path="res://Knight.gd" id="1_w0w7o"]
+
+[sub_resource type="Animation" id="Animation_xju7v"]
+resource_name = "run"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x14m8"]
+_data = {
+"run": SubResource("Animation_xju7v")
+}
+
+[node name="Knight" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_w0w7o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x14m8")
+}
+
+[node name="Body" type="Sprite2D" parent="."]
+
+[node name="Weapon" type="Sprite2D" parent="."]
+
+[node name="LeftHand" type="Sprite2D" parent="."]
+
+[node name="RightHand" type="Sprite2D" parent="."]
