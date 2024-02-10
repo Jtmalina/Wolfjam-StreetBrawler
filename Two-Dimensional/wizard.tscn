@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dg5b5xqrm2wio"]
+[gd_scene load_steps=39 format=3 uid="uid://dg5b5xqrm2wio"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_haplu"]
 [ext_resource type="Texture2D" uid="uid://bj80yhjedfl4n" path="res://CharacterPacks/Wizard/Fire vizard/Attack_1.png" id="2_puvk7"]
@@ -409,59 +409,6 @@ tracks/3/keys = {
 "values": [ExtResource("6_cmvpt")]
 }
 
-[sub_resource type="Animation" id="Animation_83a5d"]
-resource_name = "walk"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("7_ejukg")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:vframes")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
 [sub_resource type="Animation" id="Animation_a1i4i"]
 resource_name = "special1"
 length = 0.7
@@ -604,6 +551,59 @@ tracks/5/keys = {
 "values": [true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_83a5d"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_ejukg")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_luhju"]
 _data = {
 "RESET": SubResource("Animation_j7jg2"),
@@ -621,6 +621,54 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_berrc"]
 size = Vector2(22, 64)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2076f"]
+animation = &"attack1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cestg"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3as8k"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fx0ut"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i6pls"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aqto5"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rf3w1"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kh636"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_evqth"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bepfy"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8feyl"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4ue3c"]
+states/Start/position = Vector2(395, 172)
+states/attack1/node = SubResource("AnimationNodeAnimation_2076f")
+states/attack1/position = Vector2(578, 44)
+states/idle/node = SubResource("AnimationNodeAnimation_cestg")
+states/idle/position = Vector2(589, 172)
+states/run/node = SubResource("AnimationNodeAnimation_3as8k")
+states/run/position = Vector2(705, 172)
+states/walk/node = SubResource("AnimationNodeAnimation_fx0ut")
+states/walk/position = Vector2(628, 244)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_i6pls"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_aqto5"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_rf3w1"), "idle", "attack1", SubResource("AnimationNodeStateMachineTransition_kh636"), "attack1", "idle", SubResource("AnimationNodeStateMachineTransition_evqth"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_bepfy"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_8feyl")]
 
 [node name="Wizard" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_haplu")
@@ -660,4 +708,15 @@ shape = SubResource("RectangleShape2D_berrc")
 position = Vector2(-10, -32)
 shape = SubResource("RectangleShape2D_berrc")
 
+[node name="AnimationTree" type="AnimationTree" parent="."]
+callback_mode_process = 0
+libraries = {
+"": SubResource("AnimationLibrary_luhju")
+}
+tree_root = SubResource("AnimationNodeStateMachine_4ue3c")
+anim_player = NodePath("../AnimationPlayer")
+
 [connection signal="area_entered" from="Sprite2D/HitBox" to="." method="_on_sword_hit_area_entered"]
+[connection signal="area_exited" from="Sprite2D/HitBox" to="." method="_on_hit_box_area_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]
