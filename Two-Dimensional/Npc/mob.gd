@@ -5,6 +5,7 @@ const speed = 300.0
 const JUMP_VELOCITY = -400.0
 @onready var ai = $AISideScroll
 @onready var health = 100
+var dead = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -19,8 +20,11 @@ func _ready():
 func _physics_process(delta):
 	# Check for Game Over / Death
 	if health <= 0:
-		$AnimationPlayer.play("dead")
+		if dead == false:
+			$AnimationPlayer.play("dead")
+			dead = true
 		return
+			
 		
 	# Add the gravity.
 	if not is_on_floor():
@@ -62,10 +66,10 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func flip_right():
-	$Sprite2D.flip_h = false
+	scale.x = 1
 	
 func flip_left():
-	$Sprite2D.flip_h = true
+	scale.x = -1
 
 func process_detection(_directionToMove, _distanceToMove):
 	DirectionToMove = _directionToMove
@@ -73,8 +77,8 @@ func process_detection(_directionToMove, _distanceToMove):
 		bShouldJump = true
 	DistanceToMove = _distanceToMove
 	
-func take_damage(damage):
-	health -= damage
+func take_damage(damageValue):
+	health -= damageValue
 	$AnimationPlayer.play("hurt")
 
 func _on_hit_box_area_entered(area):
