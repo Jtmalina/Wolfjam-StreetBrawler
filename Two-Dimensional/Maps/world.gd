@@ -1,16 +1,18 @@
 extends Node
 
-@export var playerpath = NodePath()
-@onready var wizard = get_node(playerpath)
-
+var player_instance = preload("res://wizard.tscn").instantiate()
 const zombiepath = preload("res://Npc/zombie.tscn")
-@export var zombie : PackedScene
 
-#@onready var pathfollow2d = wizard.get("path_follow_2d")
-#@onready var spawn_point = wizard.get("spawn_point")
+var spawn_position
+
+# Do I need this? 
+@export var zombie : PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	spawn_position = get_node("PlayerSpawnPoint/PlayerSpawn").global_position
+	player_instance.position = spawn_position
+	add_child(player_instance)
 	pass # Replace with function body.
 
 
