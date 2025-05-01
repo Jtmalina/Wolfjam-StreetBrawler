@@ -1,14 +1,14 @@
 [gd_scene load_steps=21 format=3 uid="uid://cn1tkl805dpv4"]
 
 [ext_resource type="Texture2D" uid="uid://dpo5n1vb7wala" path="res://CharacterPacks/Zombie/Zombie Man/Walk.png" id="1_j6bcm"]
-[ext_resource type="Script" path="res://Npc/mob.gd" id="1_wyhvi"]
-[ext_resource type="Script" path="res://Actions/HurtBox.gd" id="2_wm0ag"]
+[ext_resource type="Script" uid="uid://ck2ur8osi0dvh" path="res://Npc/mob.gd" id="1_wyhvi"]
+[ext_resource type="Script" uid="uid://bpbobdfg7j4ni" path="res://Actions/HurtBox.gd" id="2_wm0ag"]
 [ext_resource type="Texture2D" uid="uid://dlj5gdqood6xo" path="res://CharacterPacks/Zombie/Zombie Man/Dead.png" id="3_xvm02"]
 [ext_resource type="Texture2D" uid="uid://d3vha4rewrkpg" path="res://CharacterPacks/Zombie/Zombie Man/Run.png" id="4_4ny83"]
 [ext_resource type="Texture2D" uid="uid://dvwqt68pao2ch" path="res://CharacterPacks/Zombie/Zombie Man/Hurt.png" id="5_xhyp1"]
 [ext_resource type="Texture2D" uid="uid://cb2wka3gfh6hg" path="res://CharacterPacks/Zombie/Zombie Man/Attack_1.png" id="6_emcbs"]
-[ext_resource type="Script" path="res://Actions/HitBox.gd" id="7_qmhg6"]
-[ext_resource type="Script" path="res://Npc/AISideScroll.gd" id="9_jcg8w"]
+[ext_resource type="Script" uid="uid://w7tnj8fy1bc4" path="res://Actions/HitBox.gd" id="7_qmhg6"]
+[ext_resource type="Script" uid="uid://ck6s5nfknbp6w" path="res://Npc/AISideScroll.gd" id="9_jcg8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l723r"]
 size = Vector2(34, 50)
@@ -357,12 +357,12 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rq7lo"]
 _data = {
-"RESET": SubResource("Animation_qtwrt"),
-"attack1": SubResource("Animation_ckvji"),
-"dead": SubResource("Animation_pra5v"),
-"hurt": SubResource("Animation_20efy"),
-"run": SubResource("Animation_magnt"),
-"walk": SubResource("Animation_2yv2a")
+&"RESET": SubResource("Animation_qtwrt"),
+&"attack1": SubResource("Animation_ckvji"),
+&"dead": SubResource("Animation_pra5v"),
+&"hurt": SubResource("Animation_20efy"),
+&"run": SubResource("Animation_magnt"),
+&"walk": SubResource("Animation_2yv2a")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhneo"]
@@ -397,7 +397,7 @@ shape = SubResource("RectangleShape2D_q5qyf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_rq7lo")
+&"": SubResource("AnimationLibrary_rq7lo")
 }
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]

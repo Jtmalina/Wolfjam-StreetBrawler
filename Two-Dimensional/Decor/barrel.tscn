@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://d0vxvx3wnavr3"]
 
-[ext_resource type="Script" path="res://Decor/barrel.gd" id="1_g6bwb"]
+[ext_resource type="Script" uid="uid://brdlas1l4qud1" path="res://Decor/barrel.gd" id="1_g6bwb"]
 [ext_resource type="Texture2D" uid="uid://bx71hdiud7mki" path="res://Assets/Medieval_Castle_Asset_Pack/Decorations/crate_1_damaged.png" id="1_ugrwy"]
 [ext_resource type="Texture2D" uid="uid://bmg6mglmh48t0" path="res://Assets/Medieval_Castle_Asset_Pack/Decorations/crate_1.png" id="2_o838u"]
-[ext_resource type="Script" path="res://Actions/HurtBox.gd" id="3_lj2s1"]
+[ext_resource type="Script" uid="uid://bpbobdfg7j4ni" path="res://Actions/HurtBox.gd" id="3_lj2s1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h15w8"]
 size = Vector2(32, 30)

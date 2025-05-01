@@ -1,16 +1,16 @@
 [gd_scene load_steps=27 format=3 uid="uid://cmx0lxu7285kn"]
 
-[ext_resource type="Script" path="res://Player/Player.gd" id="1_haplu"]
+[ext_resource type="Script" uid="uid://ds8vedbuggqtb" path="res://Player/Player.gd" id="1_haplu"]
 [ext_resource type="Texture2D" uid="uid://c8luht11bf6pu" path="res://CharacterPacks/Wizard/Lightning Mage/Walk.png" id="2_qi2fu"]
 [ext_resource type="Texture2D" uid="uid://c0kxmruk8hctv" path="res://CharacterPacks/Wizard/Lightning Mage/Run.png" id="5_ji8ue"]
 [ext_resource type="Texture2D" uid="uid://c30sougjgqec8" path="res://CharacterPacks/Wizard/Lightning Mage/Attack_1.png" id="6_xy6uw"]
 [ext_resource type="Texture2D" uid="uid://cub6rek33tn6y" path="res://CharacterPacks/Wizard/Lightning Mage/Attack_2.png" id="7_noei8"]
 [ext_resource type="Texture2D" uid="uid://dsw5u4qpbkff1" path="res://CharacterPacks/Wizard/Lightning Mage/Hurt.png" id="8_aoh7g"]
 [ext_resource type="Texture2D" uid="uid://cbowtiudhf8cu" path="res://CharacterPacks/Wizard/Lightning Mage/Idle.png" id="9_5hbql"]
-[ext_resource type="Script" path="res://Actions/HitBox.gd" id="10_8hmkj"]
+[ext_resource type="Script" uid="uid://w7tnj8fy1bc4" path="res://Actions/HitBox.gd" id="10_8hmkj"]
 [ext_resource type="Texture2D" uid="uid://c643s2jlamm5h" path="res://CharacterPacks/Wizard/Lightning Mage/Jump.png" id="10_swk4v"]
 [ext_resource type="Texture2D" uid="uid://cm0vu7tijilr3" path="res://CharacterPacks/Wizard/Lightning Mage/Light_ball.png" id="11_6x4j2"]
-[ext_resource type="Script" path="res://Actions/HurtBox.gd" id="11_44dy0"]
+[ext_resource type="Script" uid="uid://bpbobdfg7j4ni" path="res://Actions/HurtBox.gd" id="11_44dy0"]
 [ext_resource type="Texture2D" uid="uid://bmchriwdfixw8" path="res://CharacterPacks/Wizard/Lightning Mage/Light_charge.png" id="12_cindg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7rxvt"]
@@ -668,16 +668,16 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cpoub"]
 _data = {
-"RESET": SubResource("Animation_677ve"),
-"attack1": SubResource("Animation_tqmhc"),
-"attack2": SubResource("Animation_jk543"),
-"hurt": SubResource("Animation_u426i"),
-"idle": SubResource("Animation_1y8lj"),
-"jump": SubResource("Animation_0j51j"),
-"run": SubResource("Animation_8raqr"),
-"special1": SubResource("Animation_n56pa"),
-"special2": SubResource("Animation_s8dgt"),
-"walk": SubResource("Animation_h64up")
+&"RESET": SubResource("Animation_677ve"),
+&"attack1": SubResource("Animation_tqmhc"),
+&"attack2": SubResource("Animation_jk543"),
+&"hurt": SubResource("Animation_u426i"),
+&"idle": SubResource("Animation_1y8lj"),
+&"jump": SubResource("Animation_0j51j"),
+&"run": SubResource("Animation_8raqr"),
+&"special1": SubResource("Animation_n56pa"),
+&"special2": SubResource("Animation_s8dgt"),
+&"walk": SubResource("Animation_h64up")
 }
 
 [node name="mage" type="CharacterBody2D" groups=["player"]]
