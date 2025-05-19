@@ -3,6 +3,7 @@ extends Node2D
 signal state_changed(new_state)
 
 @onready var player_detection_zone = $PlayerDetectionZone
+var patrolDirection = -1
 
 var player : player  = null
 var actor : mob = null
@@ -24,11 +25,13 @@ func _set_state(new_State: int):
 func _process(delta):
 	match CurrentState:
 		AiState.PATROL:
+			patrolDirection = patrolDirection * -1
+			#actor.process_detection(patrolDirection, 5)
 			pass
 		AiState.ENGAGE:
 			if player != null:
-				var DirectionToMove = actor.global_position.direction_to(player.global_position)
-				var DistanceToMove = actor.global_position.distance_to(player.global_position)
+				var DirectionToMove : Vector2 = actor.global_position.direction_to(player.global_position)
+				var DistanceToMove : float = actor.global_position.distance_to(player.global_position)
 				actor.process_detection(DirectionToMove, DistanceToMove)
 				pass
 			else:

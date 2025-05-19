@@ -15,13 +15,6 @@ var anim_state
 @export var health = 100
 var dead = false
 
-var is_moving_left = false
-var is_moving_right = false
-var is_jumping = false
-var is_attacking = false
-var is_running = false
-var is_idle = false
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	anim_tree.active = true
@@ -38,13 +31,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# Handle Jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		#velocity.y = jump_velocity
-		is_jumping = true
-
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	direction = Input.get_vector("left", "right", "up", "down")
 	if direction.x != 0 && state_machine.check_if_can_move():
 		velocity.x = direction.x * speed
@@ -52,7 +39,7 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
-	update_animation()
+	update_animation_parameters()
 	update_facing_direction()
 
 func _on_hit_box_area_entered(area):
@@ -63,7 +50,7 @@ func take_damage(damageValue):
 	health -= damageValue
 	#$AnimationPlayer.play("hurt")
 
-func update_animation():
+func update_animation_parameters():
 	anim_tree.set("parameters/Walk/blend_position", direction.x)
 			
 func update_facing_direction():
@@ -71,8 +58,3 @@ func update_facing_direction():
 		sprite.flip_h = false;
 	elif direction.x < 0:
 		sprite.flip_h = true;
-
-func _on_animation_player_animation_finished(anim_name):
-	if (anim_name == "attack1"):
-		is_attacking = false
-	pass # Replace with function body.

@@ -1,5 +1,5 @@
 extends Node
-class_name CharacterStateMachine
+class_name AiStateMachine
 
 @export var current_state : State
 @export var animation_tree : AnimationTree
@@ -39,3 +39,6 @@ func switch_states(new_state : State):
 # Tracks input and sends it to the current state to handle 
 func _input(event : InputEvent):
 	current_state.state_input(event)
+	
+func process_ai_movement(aiInput : mob.AiMovementInput):
+	current_state.ai_movement_process(aiInput)

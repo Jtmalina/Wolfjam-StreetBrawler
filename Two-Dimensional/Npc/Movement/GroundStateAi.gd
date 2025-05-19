@@ -1,6 +1,6 @@
 extends State
 
-class_name GroundState
+class_name GroundStateAi
 
 @export var jump_velocity : float = -400.0
 @export var air_state : State
@@ -14,13 +14,11 @@ func state_process(delta):
 	if (!character.is_on_floor()):
 		next_state = air_state
 
-func state_input(event : InputEvent):
-	if (event.is_action_pressed("jump")):
+func ai_movement_process(aiInput : mob.AiMovementInput):
+	if (aiInput == mob.AiMovementInput.JUMP):
 		jump()
-	if (event.is_action_pressed("primary_attack")):
+	if (aiInput == mob.AiMovementInput.ATTACK):
 		primary_attack()
-	if (event.is_action_pressed("secondary_attack")):
-		secondary_attack()
 		
 func jump():
 	character.velocity.y = jump_velocity

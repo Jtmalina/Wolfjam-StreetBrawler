@@ -3,7 +3,7 @@ extends State
 class_name AirState
 
 @export var ground_state : State
-@export var walk_animation = "walk"
+@export var walk_animation = "Walk"
 
 func state_process(delta):
 	if (character.is_on_floor()):

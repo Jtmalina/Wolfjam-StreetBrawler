@@ -10,6 +10,9 @@ var next_state : State
 
 func state_process(delta):
 	pass
+	
+func ai_movement_process(aiInput : mob.AiMovementInput):
+	pass
 
 func state_input(event : InputEvent):
 	pass
