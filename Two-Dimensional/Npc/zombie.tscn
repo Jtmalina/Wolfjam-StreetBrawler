@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://crirwn5vsk2ae" path="res://Npc/Movement/GroundStateAi.gd" id="14_eetef"]
 [ext_resource type="Script" uid="uid://crwl8oap3mftd" path="res://Npc/Movement/state_debug_label_ai.gd" id="16_aqqxx"]
 [ext_resource type="Script" uid="uid://5u5h17x25k6p" path="res://Npc/Movement/PrimaryAttackStateAi.gd" id="16_eetef"]
+[ext_resource type="Script" uid="uid://bc3pfno4uomgc" path="res://Actions/Damageable.gd" id="17_aqqxx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l723r"]
 size = Vector2(34, 50)
@@ -456,7 +457,7 @@ _data = {
 size = Vector2(24, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rgedi"]
-size = Vector2(384, 82)
+size = Vector2(288, 82)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l6ajn"]
 animation = &"idle"
@@ -492,8 +493,6 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0l020"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t734o"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bexxg"]
@@ -505,7 +504,7 @@ states/jump/node = SubResource("AnimationNodeAnimation_p7ati")
 states/jump/position = Vector2(515, 49)
 states/primary_attack/node = SubResource("AnimationNodeAnimation_ly6gn")
 states/primary_attack/position = Vector2(515, 248)
-transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_p7ati"), "Walk", "jump", SubResource("AnimationNodeStateMachineTransition_vooxb"), "jump", "Walk", SubResource("AnimationNodeStateMachineTransition_bxfgv"), "Walk", "primary_attack", SubResource("AnimationNodeStateMachineTransition_0l020"), "primary_attack", "Walk", SubResource("AnimationNodeStateMachineTransition_t734o")]
+transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_p7ati"), "Walk", "jump", SubResource("AnimationNodeStateMachineTransition_vooxb"), "jump", "Walk", SubResource("AnimationNodeStateMachineTransition_bxfgv"), "primary_attack", "Walk", SubResource("AnimationNodeStateMachineTransition_t734o")]
 
 [node name="Zombie" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_wyhvi")
@@ -548,6 +547,7 @@ script = ExtResource("9_jcg8w")
 [node name="PlayerDetectionZone" type="Area2D" parent="AISideScroll"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AISideScroll/PlayerDetectionZone"]
+position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_rgedi")
 
 [node name="AiStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "animation_tree", "character")]
@@ -582,6 +582,9 @@ offset_bottom = -41.0
 text = "State: "
 script = ExtResource("16_aqqxx")
 state_machine = NodePath("../AiStateMachine")
+
+[node name="Damageable" type="Node" parent="."]
+script = ExtResource("17_aqqxx")
 
 [connection signal="area_entered" from="Sprite2D/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]

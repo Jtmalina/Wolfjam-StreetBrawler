@@ -9,6 +9,10 @@ class_name GroundState
 @export var primary_attack_animation : String = "primary_attack"
 @export var secondary_attack_state : State
 @export var secondary_attack_animation : String = "secondary_attack"
+@export var special_primary_attack_state : State
+@export var special_primary_attack_animation : String = "special_primary_attack"
+@export var special_secondary_attack_state : State
+@export var special_secondary_attack_animation : String = "special_secondary_attack"
 
 func state_process(delta):
 	if (!character.is_on_floor()):
@@ -21,6 +25,10 @@ func state_input(event : InputEvent):
 		primary_attack()
 	if (event.is_action_pressed("secondary_attack")):
 		secondary_attack()
+	if (event.is_action_pressed("special_primary_attack")):
+		special_primary_attack()
+	if (event.is_action_pressed("special_secondary_attack")):
+		special_secondary_attack()
 		
 func jump():
 	character.velocity.y = jump_velocity
@@ -34,3 +42,11 @@ func primary_attack():
 func secondary_attack():
 	next_state = secondary_attack_state
 	playback.travel(secondary_attack_animation)
+
+func special_primary_attack():
+	next_state = special_primary_attack_state
+	playback.travel(special_primary_attack_animation)
+	
+func special_secondary_attack():
+	next_state = special_secondary_attack_state
+	playback.travel(special_secondary_attack_animation)

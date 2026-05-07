@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name AiSideScroll
+
 signal state_changed(new_state)
 
 @onready var player_detection_zone = $PlayerDetectionZone
@@ -26,13 +28,16 @@ func _process(delta):
 	match CurrentState:
 		AiState.PATROL:
 			patrolDirection = patrolDirection * -1
-			#actor.process_detection(patrolDirection, 5)
+			if (patrolDirection):
+				actor.process_detection(Vector2.LEFT, 5, AiState.PATROL)
+			else:
+				actor.process_detection(Vector2.RIGHT, 5, AiState.PATROL)
 			pass
 		AiState.ENGAGE:
 			if player != null:
 				var DirectionToMove : Vector2 = actor.global_position.direction_to(player.global_position)
 				var DistanceToMove : float = actor.global_position.distance_to(player.global_position)
-				actor.process_detection(DirectionToMove, DistanceToMove)
+				actor.process_detection(DirectionToMove, DistanceToMove, AiState.ENGAGE)
 				pass
 			else:
 				print("In Engage state but player not valid")

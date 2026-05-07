@@ -21,6 +21,7 @@ var directionToMove : Vector2 = Vector2.ZERO
 var distanceToMove : float = 0
 var bShouldJump = false
 var aiInput : AiMovementInput = AiMovementInput.WALK
+var currentAiState : AiSideScroll.AiState
 
 enum AiMovementInput{
 	WALK,
@@ -50,13 +51,13 @@ func _physics_process(delta):
 		
 	if directionToMove.x != 0 && state_machine.check_if_can_move():
 		velocity.x = directionToMove.x * speed
-		if distanceToMove <= 75:
+		if distanceToMove <= 25:
 			# TODO: Hook up other move, random num?
 			aiInput = AiMovementInput.ATTACK
 			pass
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
-		if distanceToMove <= 75:
+		if distanceToMove <= 25:
 			# TODO: Hook up other move, random num?
 			aiInput = AiMovementInput.ATTACK
 			pass
@@ -77,11 +78,15 @@ func update_facing_direction():
 	elif directionToMove.x < 0:
 		sprite.flip_h = true;
 
-func process_detection(_directionToMove : Vector2, _distanceToMove : float):
+func process_detection(_directionToMove : Vector2, _distanceToMove : float, state : AiSideScroll.AiState ):
 	directionToMove = _directionToMove
 	if distanceToMove == _distanceToMove:
 		bShouldJump = true
 	distanceToMove = _distanceToMove
+	
+	currentAiState
+	
+	aiInput = AiMovementInput.WALK
 	
 func take_damage(damageValue):
 	health -= damageValue
